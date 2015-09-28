@@ -1,0 +1,40 @@
+<style>
+html, body {
+	font-size: 18px;
+	line-height: 1.5em;
+	font-family: Arial;
+	color: #222;
+}
+body {
+	margin-top: 2em;
+}
+ol, p {
+	max-width: 660px;
+	margin: 2em auto;
+}
+a {
+	color: #41A574;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.bookmark {
+	font-size: 1.618em;
+}
+</style>
+<div class="container">
+<%= link_to 'Home', blogs_path, :class => "btn btn-primary reupload gohome" %>
+<p>In order to have the tool find the croppings please pay attention to the following guidelines:</p>
+<ol>
+	<li>Create a folder on which the layer mask is applied</li>
+	<li>The folder can be called <strong>img</strong> or any name that contains <strong>image</strong> will do</li>
+	<li>Put the high res image inside this folder</li>
+	<li><strong>Don't change the name of the image layer</strong></li>
+	<li>The structure should look like this:<br /><img src="<%= image_url 'structure.png' %>"></li>
+	<li>You can resize the images proportionally and even resave the image with a lower&nbsp;res</li>
+	<li>Important is however, that the image itself is as big as or bigger than its layer mask</li>
+	<li>Test the croppings with the tool</a></li>
+
+</ol>
+</div>

@@ -1,0 +1,168 @@
+<style type="text/css">
+  #dropzone {
+      box-sizing: border-box;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      border: 2px #ababab dashed;
+      text-transform: uppercase;
+      font-weight: bold;
+      z-index: 2;
+    }
+    .powered-by {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      text-transform: none;
+      font-weight: light;
+      font-size: 12px;
+      line-height: 1.5em;
+    }
+    .powered-by a {
+      color: #92C7FF;
+      text-decoration: none;
+    }
+    #image {
+      text-align: center;
+    }
+    #view-button {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 10px;
+      background-color: #333;
+      color: #FFF;
+      cursor: pointer;
+      z-index: 100;
+      text-transform: uppercase;
+    }
+    #livepreview {
+      position: relative;
+      top: -100px;
+      width: 1200px;
+      margin: 0 auto;
+      z-index: 99;
+    }
+
+    .preview-image {
+      line-height: 0;
+    }
+    .preview-image {
+      display: inline-block;
+    }
+    .preview-image, .cropped-image > div {
+      position: relative;
+    }
+    .cropped-image {
+      position: absolute;
+      overflow: hidden;
+    }
+    .preview-image:before {
+      content: " ";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      position: absolute;
+      opacity: .7;
+    }
+    .cropping-code {
+      margin: 10px auto 50px;
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+    .cropping-code {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      padding: 40px;
+      background-color: rgba(0,0,0,0.5);
+      color: #FFF;
+      font-weight: bold;
+    }
+
+    .clear {
+      width: 100%;
+      clear: both;
+    }
+  
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      -webkit-transform: translate(-50%,-50%);
+      -moz-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+    }
+  
+    img {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+</style>
+<div class="container">
+
+	<div class="row">
+  <%= link_to 'ReCrop', edit_blog_path(@blog), :class => "btn btn-warning" %> |
+  <%= link_to 'Back', blogs_path, :class => "btn btn-info" %>
+		<div class="column">
+		<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Brand:</strong><br>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>Project Name:</strong><br>
+  <%= @blog.description %>
+</p>
+<p>
+  <strong>Links:</strong><br>
+  <% if @blog.link.nil? || @blog.link == 0 %>
+  <p>There are no links to be shown</p>
+  <% else %>
+  <p>
+    <div class="cropped-image">
+    <% @blog.link.html_safe.split("<br /><br />").each do |item| %>   
+    <div>
+      <div><img src="<%= item.strip %>"  onError="this.onerror=null;this.src='<%= image_url 'bigimage_placeholder.gif' %>';"></div>
+        <input class="cropping-code" value="<%= item.strip %> ">
+    </div>     
+     <br>  
+
+    <% end %>
+    </div> 
+  </p>
+
+  <% end %>
+</p>
+
+
+
+
+
+</div>
+	</div>
+</div>

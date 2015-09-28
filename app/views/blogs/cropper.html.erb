@@ -1,0 +1,225 @@
+<style>
+
+#dropzone {
+			box-sizing: border-box;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			border: 2px #ababab dashed;
+			text-transform: uppercase;
+			font-weight: bold;
+			z-index: 2;
+		}
+		.powered-by {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			text-transform: none;
+			font-weight: light;
+			font-size: 12px;
+			line-height: 1.5em;
+		}
+		.powered-by a {
+			color: #92C7FF;
+			text-decoration: none;
+		}
+		#image {
+			text-align: center;
+		}
+		#view-button {
+			position: fixed;
+			top: 0;
+			right: 0;
+			padding: 10px;
+			font-weight: bold;
+			font-size: 10px;
+			background-color: #333;
+			color: #FFF;
+			cursor: pointer;
+			z-index: 100;
+			text-transform: uppercase;
+		}
+		#livepreview {
+			position: relative;
+			top: -100px;
+			width: 1200px;
+			margin: 0 auto;
+			z-index: 99;
+		}
+		.row {
+			display: none;
+			position: relative;
+			z-index: 99;
+			opacity: 0;
+			padding: 50px 0;
+			border-bottom: 1px dashed #333;
+		}
+		.row:nth-child(odd) {
+			background-color: rgba(0,0,0,.05);
+		}
+		.preview-image {
+			line-height: 0;
+		}
+		.preview-image {
+			display: inline-block;
+		}
+		.preview-image, .cropped-image > div {
+			position: relative;
+		}
+		.cropped-image {
+			position: absolute;
+			overflow: hidden;
+		}
+		.preview-image:before {
+			content: " ";
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			position: absolute;
+			opacity: .7;
+		}
+		.cropping-code {
+			margin: 10px auto 50px;
+			display: block;
+			width: 100%;
+			padding: 10px 0;
+			text-align: center;
+			border: none;
+			outline: none;
+			background-color: transparent;
+		}
+		#livepreview .cropping-code {
+			box-sizing: border-box;
+			position: absolute;
+			bottom: 0;
+			margin: 0;
+			padding: 40px;
+			background-color: rgba(0,0,0,0.5);
+			color: #FFF;
+			font-weight: bold;
+		}
+		.error {
+			background-color: rgba(255,0,4,.2) !important;
+		}
+		.clear {
+			width: 100%;
+			clear: both;
+		}
+		#progress {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+		#progress .tip {
+			position: absolute;
+			left: 50%;
+			display: block;
+			width: 80vw;
+			margin-top: 2em;
+			font-weight: normal;
+			text-transform: none;
+			
+			-webkit-transform: translateX(-50%);
+			-moz-transform: translateX(-50%);
+			transform: translateX(-50%);
+		}
+		.text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			text-transform: uppercase;
+			-webkit-transform: translate(-50%,-50%);
+			-moz-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
+		}
+		@keyframes rotate {
+			from {-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);transform: rotate(0deg);}
+			to {-webkit-transform: rotate(360deg);-moz-transform: rotate(360deg);transform: rotate(360deg);}
+		}
+		.animation {
+			position: absolute;
+			top: 45%;
+			left: 50%;
+			-webkit-transform: translate(-50%,-50%);
+			-moz-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
+			width: 35px;
+			height: 35px;
+			
+		}
+		.rotate {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			
+			-webkit-animation: rotate 3s linear infinite;
+			-moz-animation: rotate 3s linear infinite;
+			animation: rotate 3s linear infinite;
+			
+			border-radius: 50%;
+			border: 3px solid #2BA800;
+		}
+		
+		.rotate:after {
+			content: " ";
+			width: 12px;
+			height: 12px;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			border-radius: 50%;
+			-webkit-transform: translate(-50%,-50%);
+			-moz-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
+			background-color: #FFF;
+		}
+		img {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			pointer-events: none;
+		}
+		#link{display:none;}
+		#save{display:none;}
+		.reupload { z-index:10; position:absolute; top:2%; left:8%; display: none;  }
+
+		.gohome { left:2%; }
+</style>	
+
+
+
+	<div id="dropzone">
+		<div class="text">
+			Drop your PSD here<br />
+		</div>
+		<div class="powered-by">created by <a href="http://czino.de/">Eric Lehmann</a><br />powered by <a href="https://www.npmjs.com/package/psd">psd.js</a></div>
+	</div>
+	<div id="progress">
+		<div class="text">Processing...<span class="tip"></span></div>
+		<div class="animation"><div class="rotate"></div></div>
+	</div>
+<%= form_for @blog do |form| %>
+  <% for attribute in [:link] %>
+    <%= form.text_field attribute, :id => attribute %>
+    <button style="z-index:10; position:absolute; top:2%; left:2%;" class="btn btn-primary" id="save">Save</button>
+ <% end %>
+<% end %>    
+<%= link_to 'ReCrop', edit_blog_path(@blog), :class => "btn btn-warning reupload" %>
+<%= link_to 'Home', blogs_path, :class => "btn btn-primary reupload gohome" %>

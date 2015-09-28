@@ -1,0 +1,48 @@
+
+<div class="container">
+	<div class="row">
+		<div class="column">
+		<p id="notice"><%= notice %></p>
+		<h1 class="headline">Listing Projects</h1>
+		<ul class="list-inline">
+        <li><%= link_to 'New Project', new_blog_path, :class => "btn btn-info" %></li>
+		<li>
+			<%= form_tag blogs_path, :method => 'get' do %>
+			  <p style="display:inline-block"><%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %> </p>
+
+			  <p style="display:inline-block">
+				<%= text_field_tag :search, params[:search] %>		
+			  </p>
+			<% end %>
+		</li>
+		<li><%= link_to 'Guidelines', guidelines_path, :class => "btn btn-info" %></li>
+		</ul>
+		
+		<table class="table" style="margin-top:30px;">
+		  <thead>
+			<tr>
+			  <th>Brand</th>
+			  <th>Project</th>
+			  <th colspan="3"></th>
+			</tr>
+		  </thead>
+
+		  <tbody>
+			<% @blogs.reverse_each do |blog| %>
+			  <tr>
+				<td><%= blog.title %></td>
+				<td><%= blog.description %></td>
+				<td><%= link_to 'Show', blog, :class => "btn btn-primary" %></td>
+				<td><%= link_to 'ReCrop', edit_blog_path(blog), :class => "btn btn-warning" %></td>
+				<td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+			  </tr>
+			<% end %>
+		  </tbody>
+		</table>
+
+		<br>
+
+		
+		</div>
+	</div>
+</div>
