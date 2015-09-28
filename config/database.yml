@@ -25,6 +25,7 @@ development:
   
 production:
   adapter: postgresql
+  database: da2s6igkpol15g
   pool: 5 
   timeout: 5000  
   username: riqronhamtnaoe
