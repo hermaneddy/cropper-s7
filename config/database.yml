@@ -21,8 +21,11 @@ development:
   pool: 5 
   timeout: 5000
   host: localhost
+  
 production:
   adapter: postgresql
   database: da2s6igkpol15g
   pool: 5 
   timeout: 5000  
+  username: riqronhamtnaoe 
+  password: uT8AWBz8J8X1cj9qoQeAiHih66
