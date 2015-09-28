@@ -15,7 +15,6 @@
 //= require bootstrap.min
 //= require psd
 //= require functions
-//= require turbolinks
 //= require_tree .
 
 
