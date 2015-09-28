@@ -17,15 +17,13 @@
 
 development:
   adapter: postgresql
-  database: da2s6igkpol15g
+  database: postgres
   pool: 5 
   timeout: 5000
-  host: localhost
+  username: postgres
+  password: scoala1989
   
 production:
   adapter: postgresql
-  database: da2s6igkpol15g
   pool: 5 
   timeout: 5000  
-  username: riqronhamtnaoe 
-  password: uT8AWBz8J8X1cj9qoQeAiHih66
