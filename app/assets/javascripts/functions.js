@@ -6,7 +6,7 @@ $( document ).ready(function() {
 		
 		document.getElementById('dropzone').addEventListener('dragover', onDragOver, true);
 		document.getElementById('dropzone').addEventListener('drop', onDrop, true);
-});
+
 		function loopThroughParents(parentGroups) {
 			for (parentGroup = parentGroups.length; parentGroup >= 0; parentGroup--) {
 				if (typeof parentGroups[parentGroup] != "undefined") {
@@ -207,3 +207,4 @@ $( document ).ready(function() {
 			reverseOrder();
 		}
 	});
+});
