@@ -110,10 +110,10 @@ $( document ).ready(function() {
 						else {
 							sthIsWrong = "";
 						}
-						
+						imageName = imageName.replace(".jpg","");
 						preview += "<div class='cropped-image' style='top:"+maskY+"px; left:"+maskX+"px; width:"+croppingWidth+"px; height:"+croppingHeight+"px;'>\n"+
 									"<div style='top:-"+croppingY+"px; left:-"+croppingX+"px;'>"+imagePNG+"</div>\n"+
-									"<input class='cropping-code"+sthIsWrong+"' value='http://images.hugoboss.com/is/image/boss/"+imageName+"?wid="+croppingWidth+"&hei="+croppingHeight+"&cropN="+croppingXRelative+","+croppingYRelative+","+croppingWidthRelative+","+croppingHeightRelative+"' />\n"+
+									"<input class='cropping-code"+sthIsWrong+"' value='http://images.hugoboss.com/is/image/boss/"+imageName+"?$marketing_asset$&wid="+croppingWidth+"&hei="+croppingHeight+"&cropN="+croppingXRelative+","+croppingYRelative+","+croppingWidthRelative+","+croppingHeightRelative+"' />\n"+
 								"</div>\n";
 						result += "<div class='row"+sthIsWrong+"'>\n"+
 							"<div class='preview-image'>"+imagePNG+"\n"+
@@ -121,7 +121,7 @@ $( document ).ready(function() {
 									"<div style='top:-"+croppingY+"px; left:-"+croppingX+"px;'>"+imagePNG+"</div>\n"+
 								"</div>\n"+
 							"</div>";
-						result += "<input class='cropping-code' value='http://images.hugoboss.com/is/image/boss/"+imageName+"?wid="+croppingWidth+"&hei="+croppingHeight+"&cropN="+croppingXRelative+","+croppingYRelative+","+croppingWidthRelative+","+croppingHeightRelative+"' />\n"+
+						result += "<input class='cropping-code' value='http://images.hugoboss.com/is/image/boss/"+imageName+"?$marketing_asset$&wid="+croppingWidth+"&hei="+croppingHeight+"&cropN="+croppingXRelative+","+croppingYRelative+","+croppingWidthRelative+","+croppingHeightRelative+"' />\n"+
 						"</div>";
 						//console.log(progress+"%");
 					}
