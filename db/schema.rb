@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150527101545) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
-    t.string   "link"
+    t.text   "link"
   end
 
   create_table "messages", force: true do |t|
