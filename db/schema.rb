@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150527101545) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+    t.text   "image"
     t.text   "link"
   end
 
