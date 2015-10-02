@@ -218,7 +218,7 @@
 <%= form_for @blog do |form| %>
   <% for attribute in [:link] %>
     <%= form.text_field attribute, :id => attribute %>
-    <button style="z-index:10; position:absolute; top:2%; left:2%;" class="btn btn-primary" id="save">Save</button>
+    <button style="z-index:10; position:absolute; top:6%; left:2%;" class="btn btn-primary" id="save">Save</button>
  <% end %>
 <% end %>    
 <%= link_to 'ReCrop', edit_blog_path(@blog), :class => "btn btn-warning reupload" %>
