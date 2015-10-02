@@ -104,7 +104,6 @@ $( document ).ready(function() {
 						croppingHeightRelative = croppingHeight / height;
 						if (croppingX < 0 || croppingY < 0) {
 							sthIsWrong = " error";
-							$('#save').hide(10);
 							$('.reupload').show(10);
 						}
 						else {
