@@ -120,12 +120,39 @@
       user-select: none;
       pointer-events: none;
     }
+     .black_overlay{
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index:1001;
+        -moz-opacity: 0.8;
+        opacity:.80;
+        filter: alpha(opacity=80);
+    }
+    .white_content {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+        padding: 16px;
+        border: 16px solid orange;
+        background-color: white;
+        z-index:1002;
+        overflow: auto;
+    }
 </style>
 <div class="container">
 
 	<div class="row">
   <%= link_to 'ReCrop', edit_blog_path(@blog), :class => "btn btn-warning" %> |
   <%= link_to 'Back', blogs_path, :class => "btn btn-info" %>
+  <a class="btn btn-danger" href= "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Image Names</a>
 		<div class="column">
 		<p id="notice"><%= notice %></p>
 
@@ -166,3 +193,30 @@
 </div>
 	</div>
 </div>
+
+
+ 
+<div id="light" class="white_content">
+
+  <p>
+  <strong>Image Names:</strong><br>
+  <% if @blog.link.nil? || @blog.link == 0 %>
+  <p>There are no links to be shown</p>
+  <% else %>
+  <p>
+    <div class="cropped-image">
+    <% @blog.link.html_safe.split("<br /><br />").each do |item| %>   
+    <div>
+        <p><%= item.strip.gsub("http://images.hugoboss.com/is/image/boss/", '').split('?')[0]  %></p>
+    </div>     
+     <br>  
+
+    <% end %>
+    </div> 
+  </p>
+
+  <% end %>
+
+
+  <a style="top: 0px;position: absolute;right: 0px;padding: 20px;" href= "javascript:void(0)" onclick= "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a></div>
+<div id="fade" class="black_overlay"></div>
