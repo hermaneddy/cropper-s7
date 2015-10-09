@@ -148,6 +148,18 @@
         z-index:1002;
         overflow: auto;
     }
+    .imageholder{
+      position: relative;
+      width: 100%;
+      background: #7E7E7E;
+    }
+
+    .imageholder img{
+    margin: 0px auto;
+    position: relative;
+    display: block;}
+
+    
 </style>
 <div class="container">
 
@@ -176,7 +188,7 @@
     <div class="cropped-image">
     <% @blog.link.html_safe.split("<br /><br />").each do |item| %>   
     <div>
-      <div><img src="<%= item.strip %>"  onError="this.onerror=null;this.src='<%= image_url 'bigimage_placeholder.gif' %>';"></div>
+      <div class="imageholder"><img src="<%= item.strip %>"  onError="this.onerror=null;this.src='<%= image_url 'bigimage_placeholder.gif' %>';"></div>
         <p class="cropping-code"><%= item.strip %></p>
     </div>     
      <br>  
