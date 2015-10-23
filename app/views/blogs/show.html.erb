@@ -189,7 +189,7 @@
     <% @blog.link.html_safe.split("<br /><br />").each do |item| %>   
     <div>
       <div class="imageholder"><img src="<%= item.strip %>"  onError="this.onerror=null;this.src='<%= image_url 'bigimage_placeholder.gif' %>';"></div>
-        <p class="cropping-code"><%= item.strip %></p>
+        <p class="cropping-code"><%= item.strip %>&op_sharpen=1</p>
     </div>     
      <br>  
 
