@@ -293,7 +293,7 @@ $( document ).ready(function() {
 			for (n = 0; n < nodes.length; n++) {
 				//$("#process > div").animate({"width":progress+"%"}, 100);
 				progress = parseInt(n / nodes.length * 100);
-				if (nodes[n].name == "img" || nodes[n].name.toLowerCase().indexOf("image") >= 0) {
+				if ((nodes[n].name == "img" || nodes[n].name.toLowerCase().indexOf("image") >= 0) && typeof nodes[n].get("text") == "undefined") { 
 					// group names that have img, image or slide in their names are accepted
 					for (i= 0; i <= nodes[n].descendants().length; i++) {
 						if (typeof nodes[n].descendants()[i] != "undefined" && typeof nodes[n].descendants()[i].get("text") == "undefined" && nodes[n].descendants()[i].get("name").toLowerCase().indexOf("rectangle") < 0 && nodes[n].descendants()[i].get("opacity") == 255) {
